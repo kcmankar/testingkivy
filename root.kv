@@ -1,0 +1,85 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import askopenfilename tkFileDialog.askopenfilename
+MyScreen:
+	transition: FadeTransition()
+	MainScreen:
+	InpScreen:
+	SelectScreen:
+	
+		
+
+<MainScreen>:
+	canvas.before:
+		Rectangle:
+			pos:self.pos
+			size:self.size
+			source:"/home/kanishka/python/images.jpeg"
+	name: 'main'
+	BoxLayout:
+		orientation:'vertical'
+		Label:
+			text:'Graphter'
+			font_size:30
+		BoxLayout:
+			Button:
+				text:'Create a Graph'
+				font_size:30
+				on_release: app.root.current = 'first'
+<InpScreen>:
+	canvas.before:
+		Rectangle:
+			pos:self.pos
+			size:self.size
+			source:"/home/kanishka/python/index1.jpeg"
+	name:'first'
+	BoxLayout:
+		orientation:'vertical'
+		Label:
+			text:'Input Your X and Y'
+			font_size:30
+		BoxLayout:
+			Button:
+				text:'select X file'
+				font_size:30
+				on_release:app.root.Inputval()
+			Button:
+				text:'select Y file'
+				font_size:30
+				on_release:app.root.InputYval()
+			Button:
+				text:'BACK'
+				font_size:30
+				on_release: app.root.current =  'main'
+			Button:
+				text:"Create"
+				font_size:30
+				on_release: app.root.current = 'second'
+<SelectScreen>:
+	canvas.before:
+		Rectangle:
+			pos:self.pos
+			size:self.size
+			source:"/home/kanishka/python/index3.jpg"
+	name:'second'
+	BoxLayout:
+		orientation:'vertical'
+		
+		Label:
+			text:"Select type"
+			font_size:30
+		BoxLayout:
+			
+			Button:
+				text:'Line'
+				font_size:30
+				on_release:app.root.graphcreation()
+			Button:
+				text:'Scatter'
+				font_size:30
+				on_release:app.root.Graphscatter()
+			Button:
+				text:"BACK"
+				font_size:30
+				on_release: app.root.current = 'first'
+			
+		
